@@ -1,23 +1,21 @@
-import logo from './logo.svg';
-import './App.css';
+import "./styles.css";
+import { useState } from "react";
+import { Routes, Route, Link } from "react-router-dom";
+import Login from "./Login";
+import JobBoard from "./JobBoard";
+import JobDetail from "./JobDetail";
+import JOBS from "./jobs";
 
 function App() {
+  const [allJobs, setAllJobs] = useState(JOBS);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Routes>
+        <Route path="/" element={<Login />} />
+        <Route path="/jobs" element={<JobBoard />} />
+        <Route path="/job/:id" element={<JobDetail />} />
+      </Routes>
     </div>
   );
 }
