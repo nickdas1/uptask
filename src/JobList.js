@@ -3,10 +3,10 @@ import { Box, Divider, Paper, Typography } from "@mui/material";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import { PRIMARY_GREEN } from "./StyledComponents";
 
-export default function JobList({ allJobs }) {
+export default function JobList({ jobs }) {
   return (
     <Paper elevation={3}>
-      {allJobs.map((job) => (
+      {jobs.map((job) => (
         <Box key={job.id} sx={{ padding: "15px" }}>
           <Link
             to={`/job/${job.id}`}
@@ -60,7 +60,7 @@ export default function JobList({ allJobs }) {
             >
               {job.description}
             </Typography>
-            <Divider />
+            <Divider sx={{marginTop: "25px"}}/>
           </Link>
         </Box>
       ))}

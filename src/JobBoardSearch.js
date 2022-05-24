@@ -7,9 +7,6 @@ import { PRIMARY_GREEN } from "./StyledComponents";
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
   backgroundColor: "white",
-  //   "&:hover": {
-  //     backgroundColor: "#f1f1f1",
-  //   },
   marginLeft: 0,
   width: "100%",
   [theme.breakpoints.up("sm")]: {
@@ -45,7 +42,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   },
 }));
 
-export default function JobBoardSearch() {
+export default function JobBoardSearch({ setSearchValue }) {
   return (
     <Search sx={{ marginBottom: "30px" }}>
       <SearchIconWrapper>
@@ -54,6 +51,7 @@ export default function JobBoardSearch() {
       <StyledInputBase
         placeholder="Search"
         inputProps={{ "aria-label": "search" }}
+        onChange={(e) => setSearchValue(e.target.value.toLowerCase())}
       />
     </Search>
   );
