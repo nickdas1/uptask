@@ -4,6 +4,7 @@ import { NavBar } from "./NavBar";
 import CategoryMenu from "./CategoryMenu";
 import JobBoardSearch from "./JobBoardSearch";
 import JobList from "./JobList";
+import { MainBody } from "./StyledComponents";
 
 export default function JobBoard({ allJobs }) {
   const [selectedCategory, setSelectedCategory] = useState("all");
@@ -18,11 +19,13 @@ export default function JobBoard({ allJobs }) {
 
   function filterJobs() {
     if (selectedCategory !== "all") {
-      allJobs = allJobs.filter(job => job.category === selectedCategory);
+      allJobs = allJobs.filter((job) => job.category === selectedCategory);
     }
 
     if (searchValue) {
-      allJobs = allJobs.filter(job => job.title.toLowerCase().includes(searchValue));
+      allJobs = allJobs.filter((job) =>
+        job.title.toLowerCase().includes(searchValue)
+      );
     }
 
     return allJobs;
@@ -31,7 +34,7 @@ export default function JobBoard({ allJobs }) {
   return (
     <div>
       <NavBar />
-      <Box sx={{ display: "flex", padding: "50px 5%", textAlign: "left" }}>
+      <MainBody sx={{ display: "flex", padding: "50px 5%", textAlign: "left" }}>
         <Box sx={{ width: "30%" }}>
           <Typography
             variant="h5"
@@ -54,7 +57,7 @@ export default function JobBoard({ allJobs }) {
           <JobBoardSearch setSearchValue={setSearchValue} />
           <JobList jobs={filterJobs()} />
         </Box>
-      </Box>
+      </MainBody>
     </div>
   );
 }

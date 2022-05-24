@@ -23,7 +23,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Login setLoggedIn={setLoggedIn} />} />
         <Route path="/jobs" element={<JobBoard allJobs={allJobs} />} />
-        <Route path="/job/:id" element={<JobDetail />} />
+        <Route path="/job/:id" element={<JobDetail allJobs={allJobs} />} />
       </Routes>
     </div>
   );
